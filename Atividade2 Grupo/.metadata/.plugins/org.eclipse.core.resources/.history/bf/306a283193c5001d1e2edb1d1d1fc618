@@ -1,0 +1,25 @@
+package jogo;
+
+import java.util.ArrayList;
+
+public class Celula {
+	
+	private ArrayList<Peao> peoes;
+	private int posicao;
+	
+	
+	public Celula() {
+		peoes = new ArrayList<>();
+	}
+	
+	public Celula(int posicao) {
+		this.posicao = posicao;
+		peoes = new ArrayList<>();
+	}
+	
+	
+	public boolean addPeao(Peao peao) {
+		
+	}
+
+}

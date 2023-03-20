@@ -1,0 +1,23 @@
+package jogo;
+
+public class Peao {
+	private String cor;
+	private int linha;
+	private int coluna;
+	
+	/**
+	 * @param cor
+	 * @param i
+	 * @param j
+	 */
+	public Peao(String cor, int i, int j) {
+		this.cor = cor;
+		this.linha = linha;
+		this.coluna = coluna;
+	}
+	
+	
+	
+	
+	
+}
