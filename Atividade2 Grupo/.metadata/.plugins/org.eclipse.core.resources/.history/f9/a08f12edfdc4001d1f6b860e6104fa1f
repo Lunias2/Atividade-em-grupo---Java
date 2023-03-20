@@ -1,0 +1,22 @@
+package jogo;
+
+public class Jogar {
+
+	public static void main(String[] args) {
+		Jogo jogo = new Jogo();
+		jogo.iniciarJogo();
+		int cont = 0;
+		jogo.mostrarTabuleiro();
+		while(!jogo.fimDeJogo()) {
+			if(cont == 8)
+				cont = 0;
+			jogo.verificaMovimentarPeca(cont);
+			System.out.println();
+			jogo.mostrarTabuleiro();
+			cont++;
+		}
+		
+		System.out.println("!!!!Parabens vencedor do jogo: [" + jogo.getVencedor() + "]!!!!");
+	}
+
+}

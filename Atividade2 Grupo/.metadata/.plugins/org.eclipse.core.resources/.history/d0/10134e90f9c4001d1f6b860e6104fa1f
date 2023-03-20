@@ -1,0 +1,25 @@
+package jogo;
+
+public class Jogar {
+
+	public static void main(String[] args) {
+		Jogo jogo = new Jogo();
+		jogo.iniciarJogo();
+		int cont = 0;
+		while(!jogo.fimDeJogo()) {
+			if(cont == 8)
+				cont = 0;
+			jogo.mostrarTabuleiro();
+			jogo.verificaMovimentarPeca(cont);
+			jogo.mostrarTabuleiro();
+			
+			
+			cont++;
+		}
+		
+		
+		
+		
+	}
+
+}

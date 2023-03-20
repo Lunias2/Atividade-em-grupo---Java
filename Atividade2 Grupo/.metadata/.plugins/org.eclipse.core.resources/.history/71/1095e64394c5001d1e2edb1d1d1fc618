@@ -1,0 +1,33 @@
+package jogo;
+
+import java.util.ArrayList;
+
+public class Celula {
+	
+	private ArrayList<Peao> peoes;
+	
+	
+	public Celula() {
+		peoes = new ArrayList<>();
+	}
+	
+	public Celula(int posicao) {
+		peoes = new ArrayList<>();
+	}
+	
+	
+	public boolean verificaPeao(Peao peao) {
+		if(peoes.isEmpty() || (peoes.get(0).getCor().equals(peao.getCor()))) {
+			addPeao(peao);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void addPeao(Peao peao) {
+		peoes.add(peao);
+	}
+	
+
+}
