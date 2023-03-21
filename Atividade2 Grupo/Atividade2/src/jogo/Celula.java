@@ -7,6 +7,8 @@ public class Celula {
 	private Celula celulaSeguinte;
 	private ArrayList<Peao> peoes;
 	private int posicao;
+	private int linha;
+	private int coluna;
 	private boolean isCelulafinal;
 	
 	
@@ -15,8 +17,10 @@ public class Celula {
 		
 	}
 	
-	public Celula(int posicao) {
+	public Celula(int posicao, int linha, int coluna) {
 		this.posicao = posicao;
+		this.linha = linha;
+		this.coluna = coluna;
 		peoes = new ArrayList<>();
 		celulaSeguinte = null;
 	}
@@ -24,7 +28,6 @@ public class Celula {
 	
 	public boolean verificaPeao(Peao peao) {
 		if( peoes.isEmpty() || ( (peoes.get(0).getCor().equals(peao.getCor())) && peoes.size() < 4 ) ) {
-			addPeao(peao);
 			return true;
 		} else {
 			return false;
@@ -95,6 +98,34 @@ public class Celula {
 	 */
 	public void setCelulafinal(boolean isCelulafinal) {
 		this.isCelulafinal = isCelulafinal;
+	}
+
+	/**
+	 * @return the linha
+	 */
+	public int getLinha() {
+		return linha;
+	}
+
+	/**
+	 * @return the coluna
+	 */
+	public int getColuna() {
+		return coluna;
+	}
+
+	/**
+	 * @param linha the linha to set
+	 */
+	public void setLinha(int linha) {
+		this.linha = linha;
+	}
+
+	/**
+	 * @param coluna the coluna to set
+	 */
+	public void setColuna(int coluna) {
+		this.coluna = coluna;
 	}
 	
 
