@@ -25,6 +25,10 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.BorderLayout;
+import java.awt.Color;
+
+import javax.swing.SwingConstants;
 
 public class TelaInicial extends JFrame {
 	private String rolagem = "Rolagens: \n\n";
@@ -81,7 +85,6 @@ public class TelaInicial extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String ip = JOptionPane.showInputDialog(null, "Digite o endereço IP da máquina que se deseja conectar");
-					//String[] partes = ip.split(".");
 					InetAddress enderecoHost = InetAddress.getByName(ip);
 					JOptionPane.showMessageDialog(Conectar, "Conectado ao endereço" + enderecoHost.getHostAddress());
 				}catch ( UnknownHostException host){
@@ -116,32 +119,43 @@ public class TelaInicial extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		JPanel painelJogo = new JPanel();
 		painelJogo.setBounds(0, 0, 306, 214);
-		contentPane.add(painelJogo);
+		contentPane.add(painelJogo, BorderLayout.WEST);
 		painelJogo.setLayout(null);
 		
-		JScrollPane scrollTexto = new JScrollPane(textArea);
-		scrollTexto.setBounds(316, 200, 225, -192);
-		scrollTexto.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		contentPane.add(scrollTexto);
+		JPanel painelBotao = new JPanel();
+		contentPane.add(painelBotao, BorderLayout.SOUTH);
+		
+		JScrollPane scrollTexto = new JScrollPane();
+		contentPane.add(scrollTexto, BorderLayout.CENTER);
+		
 		
 		textArea = new JTextArea();
+		textArea.setForeground(Color.yellow);
+		textArea.setEditable(false);
+		textArea.setEnabled(false);
 		textArea.setBounds(0, 0, 5, 22);
 		scrollTexto.setViewportView(textArea);
 		scrollTexto.setVisible(true);
 		
+		textArea.setText(rolagem);
+		
+		textArea.setBackground(new Color(128, 128, 128));
+		
 		JButton rolarDadosButton = new JButton("Dado");
 		rolarDadosButton.setBounds(432, 220, 109, 23);
-		contentPane.add(rolarDadosButton);
+		painelBotao.add(rolarDadosButton);
 		rolarDadosButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Random dado = new Random();
-				rolagem += "[" + contador + "] = " + (dado.nextInt(6) + 1) + "\n";
+				rolagem += "Jogador[" + (contador + 1) + "] rolou [" + (dado.nextInt(6) + 1) + "]\n";
 				textArea.setText(rolagem);
 				contador++;
+				if(contador == 8)
+					contador = 0;
 			}
 		});
 		
