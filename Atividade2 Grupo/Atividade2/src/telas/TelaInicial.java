@@ -12,23 +12,17 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Random;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-import javax.swing.SwingConstants;
 
 public class TelaInicial extends JFrame {
 	private String rolagem = "Rolagens: \n\n";
@@ -43,6 +37,7 @@ public class TelaInicial extends JFrame {
 			public void run() {
 				try {
 					TelaInicial frame = new TelaInicial();
+					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,11 +51,8 @@ public class TelaInicial extends JFrame {
 	 */
 	public TelaInicial() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 587, 315);
+		setBounds(100, 100, 1000, 700);
 
-		
-		
-		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
@@ -79,22 +71,21 @@ public class TelaInicial extends JFrame {
 		});
 		Jogar.add(serHost);
 		
-		
-		JMenuItem Conectar = new JMenuItem("Conectar");
-		Conectar.addActionListener(new ActionListener() {
+		JMenuItem conectar = new JMenuItem("Conectar");
+		conectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String ip = JOptionPane.showInputDialog(null, "Digite o endereço IP da máquina que se deseja conectar");
 					InetAddress enderecoHost = InetAddress.getByName(ip);
-					JOptionPane.showMessageDialog(Conectar, "Conectado ao endereço" + enderecoHost.getHostAddress());
+					JOptionPane.showMessageDialog(conectar, "Conectado ao endereço" + enderecoHost.getHostAddress());
 				}catch ( UnknownHostException host){
-					JOptionPane.showMessageDialog(Conectar, "Endereco invalido. \nErro: " + host.toString() );
+					JOptionPane.showMessageDialog(conectar, "Endereco invalido. \nErro: " + host.toString() );
 					
 				}
 				
 			}
 		});
-		Jogar.add(Conectar);
+		Jogar.add(conectar);
 		
 		JMenu regra = new JMenu("Regras");
 		menuBar.add(regra);
@@ -102,7 +93,7 @@ public class TelaInicial extends JFrame {
 		JMenuItem MenuItemRegras = new JMenuItem("Visualizar Regras");
 		MenuItemRegras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(Conectar, "O Ludo é um jogo de tabuleiro para dois a quatro jogadores, que se movem em torno do tabuleiro tentando levar todas as suas peças do início até a base.\n As regras do Ludo são simples:\r\n"
+				JOptionPane.showMessageDialog(conectar, "O Ludo é um jogo de tabuleiro para dois a quatro jogadores, que se movem em torno do tabuleiro tentando levar todas as suas peças do início até a base.\n As regras do Ludo são simples:\r\n"
 						+ "\r\n"
 						+ "1 - Cada jogador começa com quatro peças na área de início do tabuleiro.\r\n"
 						+ "2 - O objetivo do jogo é mover todas as suas peças da área de início até a base, passando pelo caminho em volta do tabuleiro.\r\n"

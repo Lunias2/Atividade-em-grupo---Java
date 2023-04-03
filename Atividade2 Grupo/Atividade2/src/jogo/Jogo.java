@@ -3,6 +3,9 @@ package jogo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
+
+import celulas.Celula;
+
 import java.util.LinkedList;
 
 public class Jogo {
@@ -20,10 +23,11 @@ public class Jogo {
 
 	public void iniciarJogoLista() {
 		int cont = 0;
+		//int String[] cores = {"vermelho", "azul"};
 		Celula[][] auxiliar = new Celula[4][14];
 		for(int i = 0; i < 4; i++) {
 			for( int j = 0; j < 14; j++) {
-				Celula celula = new Celula(cont, i, j);
+				Celula celula = new Celula(cont);
 				auxiliar[i][j] = celula;
 				cont++;
 			}
@@ -34,14 +38,14 @@ public class Jogo {
 			}
 		}
 		celulas.get(celulas.size() - 1).setCelulafinal(true);
-		
+		celulas.get(celulas.size() - 1).setCelulaSeguinte(celulas.get(0));
 		for(int i = 0; i < 4; i++) {
-			Peao aux = new Peao("Vermelho", 0, 0);
+			Peao aux = new Peao("Vermelho", 0);
 			peoes.add(aux);
 		}
 
 		for(int i = 0; i < 4; i++) {
-			Peao aux = new Peao("Azul", 0, 0);
+			Peao aux = new Peao("Azul", 0);
 			peoes.add(aux);
 		}
 		
@@ -64,7 +68,6 @@ public class Jogo {
 				celulasIterator.next();
 				cont++;
 			}
-				
 			
 			for(int i = 0; i < movimento && celulasIterator.hasNext(); i++ ) {
 				celulaMovimento = celulasIterator.next();
@@ -72,25 +75,23 @@ public class Jogo {
 			if(celulaMovimento.verificaPeao(peaoAuxiliar)) {
 				celulas.get(peaoAuxiliar.getPosicao()).removePeao(peaoAuxiliar);
 				celulaMovimento.addPeao(peaoAuxiliar);
-				atualizarPeao(celulaMovimento.getLinha(), celulaMovimento.getColuna(), celulaMovimento.getPosicao(), peaoAuxiliar);
+				atualizarPeao(celulaMovimento.getPosicao(), peaoAuxiliar);
 				System.out.println("Peao [" + index + "] andou [" + movimento + "] casas");
 			} else {
 				celulas.get(peaoAuxiliar.getPosicao()).removePeao(peaoAuxiliar);
 				celulas.get(0).addPeao(peaoAuxiliar);
-				atualizarPeao(0, 0, 0, peaoAuxiliar);
+				atualizarPeao(0, peaoAuxiliar);
 				System.out.println("Peao [" + index + "] voltou para o inicio :c");
 			}
 		} else {
-			System.out.println("Peao [" + index + "] esta na última casa!");
+			System.out.println("Peao [" + index + "] esta na ï¿½ltima casa!");
 			return;
 		}
 			
 		
 	}
 	
-	public void atualizarPeao(int linha, int coluna, int posicao, Peao peao) {
-		peao.setLinha(linha);
-		peao.setColuna(coluna);
+	public void atualizarPeao(int posicao, Peao peao) {
 		peao.setPosicao(posicao);
 	}
 	
@@ -117,7 +118,7 @@ public class Jogo {
 		cont = 0;
 		while(peoesIterator.hasNext()) {
 			Peao auxiliar = peoesIterator.next();
-			System.out.println("Peao [" + cont + "] esta na posicao [" + auxiliar.getLinha() + "][" + auxiliar.getColuna() + "]");
+			System.out.println("Peao [" + cont + "] esta na posicao [" + auxiliar.getPosicao() + "]");
 			cont++;
 		}
 	}

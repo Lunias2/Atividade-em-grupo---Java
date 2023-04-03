@@ -1,15 +1,17 @@
-package jogo;
+package celulas;
 
+import java.awt.Color;
 import java.util.ArrayList;
+
+import jogo.Peao;
 
 public class Celula {
 	
 	private Celula celulaSeguinte;
 	private ArrayList<Peao> peoes;
 	private int posicao;
-	private int linha;
-	private int coluna;
 	private boolean isCelulafinal;
+	private String cor;
 	
 	
 	public Celula() {
@@ -17,15 +19,24 @@ public class Celula {
 		
 	}
 	
-	public Celula(int posicao, int linha, int coluna) {
+	public Celula(int posicao) {
 		this.posicao = posicao;
-		this.linha = linha;
-		this.coluna = coluna;
 		peoes = new ArrayList<>();
 		celulaSeguinte = null;
 	}
 	
+	public Celula(int posicao, String cor) {
+		this.cor = cor;
+		this.posicao = posicao;
+		peoes = new ArrayList<>();
+		celulaSeguinte = null;
+	}
 	
+	/**
+	 * Verifica se é possivel adicionar o @param peao nesta celula
+	 * Se o arraylist de peoes estiver vazio é possível
+	 * Se o @param peão tiver a mesma cor que os outros peoes é possível também
+	 * */
 	public boolean verificaPeao(Peao peao) {
 		if( peoes.isEmpty() || ( (peoes.get(0).getCor().equals(peao.getCor())) && peoes.size() < 4 ) ) {
 			return true;
@@ -52,24 +63,10 @@ public class Celula {
 	}
 
 	/**
-	 * @return the posicao
-	 */
-	public int getPosicao() {
-		return posicao;
-	}
-
-	/**
 	 * @param peoes the peoes to set
 	 */
 	public void setPeoes(ArrayList<Peao> peoes) {
 		this.peoes = peoes;
-	}
-
-	/**
-	 * @param posicao the posicao to set
-	 */
-	public void setPosicao(int posicao) {
-		this.posicao = posicao;
 	}
 
 	/**
@@ -101,31 +98,31 @@ public class Celula {
 	}
 
 	/**
-	 * @return the linha
+	 * @return the posicao
 	 */
-	public int getLinha() {
-		return linha;
-	}
-
-	/**
-	 * @return the coluna
-	 */
-	public int getColuna() {
-		return coluna;
-	}
-
-	/**
-	 * @param linha the linha to set
-	 */
-	public void setLinha(int linha) {
-		this.linha = linha;
+	public int getPosicao() {
+		return posicao;
 	}
 
 	/**
 	 * @param coluna the coluna to set
 	 */
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
+	public void setPosicao(int posicao) {
+		this.posicao = posicao;
+	}
+
+	/**
+	 * @return the cor
+	 */
+	public String getCor() {
+		return cor;
+	}
+
+	/**
+	 * @param cor the cor to set
+	 */
+	public void setCor(String cor) {
+		this.cor = cor;
 	}
 	
 

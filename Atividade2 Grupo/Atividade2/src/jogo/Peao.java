@@ -2,8 +2,6 @@ package jogo;
 
 public class Peao {
 	private String cor;
-	private int linha;
-	private int coluna;
 	private int posicao;
 	
 	/**
@@ -11,10 +9,9 @@ public class Peao {
 	 * @param linha
 	 * @param coluna
 	 */
-	public Peao(String cor, int linha, int coluna) {
+	public Peao(String cor, int posicao) {
 		this.cor = cor;
-		this.linha = linha;
-		this.coluna = coluna;
+		this.posicao = posicao;
 	}
 
 	/**
@@ -45,38 +42,10 @@ public class Peao {
 	}
 
 	/**
-	 * @return the linha
-	 */
-	public int getLinha() {
-		return linha;
-	}
-
-	/**
-	 * @return the coluna
-	 */
-	public int getColuna() {
-		return coluna;
-	}
-
-	/**
 	 * @param cor the cor to set
 	 */
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
 
-	/**
-	 * @param linha the linha to set
-	 */
-	public void setLinha(int linha) {
-		this.linha = linha;
-	}
-
-	/**
-	 * @param coluna the coluna to set
-	 */
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
-	}
-	
 }
