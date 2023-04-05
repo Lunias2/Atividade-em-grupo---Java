@@ -1,7 +1,0 @@
-package jogo;
-
-public class Celula {
-	
-	ArrayList<Peao> peoes;
-
-}
