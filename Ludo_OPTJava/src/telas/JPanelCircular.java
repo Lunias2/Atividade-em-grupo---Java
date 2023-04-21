@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.LayoutManager;
 import java.awt.RenderingHints;
-
 import javax.swing.JPanel;
 
 /**
@@ -15,8 +14,14 @@ import javax.swing.JPanel;
  *
  */
 public class JPanelCircular extends JPanel    {
-    private Color backgroundColor;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 652591046208742610L;
+	private Color backgroundColor;
     private int cornerRadius = 15;
+    private String caminho;
+    
     public JPanelCircular(LayoutManager layout, int radius) {
         super(layout);
         cornerRadius = radius;
@@ -31,10 +36,11 @@ public class JPanelCircular extends JPanel    {
         cornerRadius = radius;
         
     }
-    public JPanelCircular(int radius, Color bgColor) {
+    public JPanelCircular(int radius, Color bgColor, String caminho) {
         super();
         cornerRadius = radius;
         backgroundColor = bgColor;
+        this.caminho = caminho;
     }
     @Override
     protected void paintComponent(Graphics g) {
@@ -52,8 +58,22 @@ public class JPanelCircular extends JPanel    {
         }
         graphics.fillRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint background
         graphics.setColor(getForeground());
-//        graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
-//         
+        graphics.drawRoundRect(0, 0, width-1, height-1, arcs.width, arcs.height); //paint border
+         
     }
+	/**
+	 * @return the caminho
+	 */
+	public String getCaminho() {
+		return caminho;
+	}
+	/**
+	 * @param caminho the caminho to set
+	 */
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
+	}
+    
+
 }
 
